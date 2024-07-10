@@ -8,7 +8,7 @@ function calculator(){
     function add(a, b){
         try{
             if (typeof a !== 'number' || typeof b !== 'number' ){
-                throw new Error('Error: all parameters must be numbers.')
+                throw new Error('all parameters must be numbers.')
             } else {
                 return a + b;
             }
@@ -18,7 +18,7 @@ function calculator(){
 }
     function subtract(a, b){
         if (typeof a !== 'number' || typeof b !== 'number' ){
-            throw new Error('Error: all parameters must be numbers.');
+            throw new Error('all parameters must be numbers.');
         }
         else{
             return a - b;
@@ -26,7 +26,7 @@ function calculator(){
     }
     function multiplication(a, b){
         if (typeof a !== 'number' || typeof b !== 'number' ){
-            throw new Error('Error: all parameters must be numbers.');
+            throw new Error('all parameters must be numbers.');
         }
         else{
             return a * b;
@@ -34,7 +34,7 @@ function calculator(){
     }
     function division(a, b){
         if (typeof a !== 'number' || typeof b !== 'number' ){
-            throw new Error('Error: all parameters must be numbers.');
+            throw new Error('all parameters must be numbers.');
         }
         else if (b === 0){
             throw new Error('Division by zero is not allowed.')
@@ -43,12 +43,36 @@ function calculator(){
             return a / b
         }
     }
-    return{add, subtract, multiplication, division};
+    function raise(a, b){
+        try{
+            if (typeof a !== 'number' || typeof b !== 'number' ){
+                throw new Error('all parameters must be numbers.');
+            }else{
+                return Math.pow(a, b)
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+    function squareRoot(a){
+        if (typeof a !== 'number'){
+            throw new Error('parameter must be number.');
+        }
+        else if (a < 0){
+            throw new Error('Negative numbers are not allowed.')
+        }
+        else{
+            return Math.sqrt(a)
+        }
+    }
+    return{add, subtract, multiplication, division, raise, squareRoot};
 }
 
 
 
 const myCalculator = calculator();
-// console.log(myCalculator.add('l', 1))
-// console.log(myCalculator.subtract(1, 10.5))
+console.log(myCalculator.add('l', 1))
+console.log(myCalculator.subtract(1, 10.5))
 console.log(myCalculator.division(1, 0))
+console.log(myCalculator.raise(2, 2))
+console.log(myCalculator.squareRoot(9))
